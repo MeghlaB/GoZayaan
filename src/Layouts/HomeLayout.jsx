@@ -1,12 +1,13 @@
 import React from 'react'
 import Footer from '../Components/Footer/Footer'
-
+ import FlightBanner from '../FlightBanner'
+import { Outlet } from 'react-router-dom'
 
 function HomeLayout() {
     return (
         <div>
-            <h1 className='2xl'>Navbar</h1>
-
+         <FlightBanner/>
+<Outlet/>
             {/* Footer Section */}
             <Footer></Footer>
         </div>

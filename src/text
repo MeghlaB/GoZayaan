@@ -1,0 +1,104 @@
+// import React from "react";
+// import { FaPlaneDeparture, FaHotel, FaGlobe, FaPassport } from "react-icons/fa";
+// import { IoMdRadioButtonOn } from "react-icons/io";
+// import { FiUser } from "react-icons/fi";
+
+// const FlightSearch = () => {
+//   return (
+//     <div className="relative min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/your-background.jpg')" }}>
+//       {/* Topbar */}
+//       <div className="flex justify-between items-center p-4">
+//         <div className="flex items-center gap-2 text-white font-bold text-xl">
+//           <img src="/logo.png" alt="Logo" className="h-8" />
+//           goZayaan
+//         </div>
+//         <div className="flex items-center gap-3">
+//           <span className="text-white">BDT</span>
+//           <button className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-1 rounded">Sign In</button>
+//         </div>
+//       </div>
+
+//       {/* Main Search Box */}
+//       <div className="flex justify-center mt-10">
+//         <div className="bg-white p-6 rounded-xl shadow-lg w-[80%] max-w-5xl">
+//           {/* Tabs */}
+//           <div className="flex justify-around mb-6">
+//             <div className="flex items-center gap-2 text-blue-700 font-semibold border-b-2 border-yellow-400 pb-2">
+//               <FaPlaneDeparture /> Flight
+//             </div>
+//             <div className="flex items-center gap-2 text-gray-500 hover:text-blue-500 cursor-pointer">
+//               <FaHotel /> Hotel
+//             </div>
+//             <div className="flex items-center gap-2 text-gray-500 hover:text-blue-500 cursor-pointer">
+//               <FaGlobe /> Tour
+//             </div>
+//             <div className="flex items-center gap-2 text-gray-500 hover:text-blue-500 cursor-pointer">
+//               <FaPassport /> Visa
+//             </div>
+//           </div>
+
+//           {/* Trip Type */}
+//           <div className="flex gap-6 mb-4 text-sm text-gray-700 font-medium">
+//             <label className="flex items-center gap-1 cursor-pointer text-blue-600">
+//               <IoMdRadioButtonOn /> One Way
+//             </label>
+//             <label className="flex items-center gap-1 cursor-pointer">
+//               <input type="radio" name="trip" /> Round Way
+//             </label>
+//             <label className="flex items-center gap-1 cursor-pointer">
+//               <input type="radio" name="trip" /> Multi City
+//             </label>
+//           </div>
+
+//           {/* Inputs */}
+//           <div className="grid grid-cols-5 gap-4 text-sm">
+//             {/* From */}
+//             <div className="border p-3 rounded-md">
+//               <p className="text-xs text-gray-500">FROM</p>
+//               <p className="text-base font-semibold text-blue-800">Dhaka</p>
+//               <p className="text-xs text-gray-400">DAC, Hazrat Shahjalal Intl</p>
+//             </div>
+
+//             {/* To */}
+//             <div className="border p-3 rounded-md">
+//               <p className="text-xs text-gray-500">TO</p>
+//               <p className="text-base font-semibold text-blue-800">Cox's Bazar</p>
+//               <p className="text-xs text-gray-400">CXB, Cox's Bazar Airport</p>
+//             </div>
+
+//             {/* Journey Date */}
+//             <div className="border p-3 rounded-md">
+//               <p className="text-xs text-gray-500">JOURNEY DATE</p>
+//               <p className="text-base font-semibold text-blue-800">14 <span className="text-sm">Jul’25</span></p>
+//               <p className="text-xs text-gray-400">Monday</p>
+//             </div>
+
+//             {/* Return Date */}
+//             <div className="border p-3 rounded-md">
+//               <p className="text-xs text-gray-500">RETURN DATE</p>
+//               <p className="text-sm text-blue-600">Save more on return flight</p>
+//             </div>
+
+//             {/* Traveler */}
+//             <div className="border p-3 rounded-md">
+//               <p className="text-xs text-gray-500">TRAVELER, CLASS</p>
+//               <p className="text-base font-semibold text-blue-800 flex items-center gap-1">
+//                 <FiUser /> 1 Traveler
+//               </p>
+//               <p className="text-xs text-gray-400">Economy</p>
+//             </div>
+//           </div>
+
+//           {/* Search Button */}
+//           <div className="flex justify-center mt-6">
+//             <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-10 rounded-lg text-lg">
+//               Search
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FlightSearch;
