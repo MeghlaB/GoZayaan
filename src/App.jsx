@@ -13,6 +13,7 @@ function App() {
       <div className="h-screen"></div>
       <div>
         <h1>Hello</h1>
+        <h2>Hello world 2</h2>
       </div>
     </div>
     </>
