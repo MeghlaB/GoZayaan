@@ -11,6 +11,9 @@ function App() {
       <FlightBanner />
       {/* Rest of your content with enough space to scroll */}
       <div className="h-screen"></div>
+      <div>
+        <h1>Hello</h1>
+      </div>
     </div>
     </>
   )
