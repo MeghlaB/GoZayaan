@@ -11,6 +11,7 @@ import {
   Clock,
 } from "lucide-react";
 import { BiChevronDown } from "react-icons/bi";
+import FlightForm from "./Flightfrom";
 
 const flights = [
   {
@@ -64,7 +65,7 @@ const flights = [
 ];
 
 export default function FlightBookingUI() {
-  const [tripType, setTripType] = useState("one-way");
+ 
   const [expanded, setExpanded] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState(40 * 60); // 40 minutes in seconds
@@ -89,76 +90,15 @@ export default function FlightBookingUI() {
     return `${min}:${sec}`;
   };
 
-  const data = [
-    {
-      tripType: "one-way",
-      fields: [
-        { label: "FROM", location: "Dhaka", code: "DAC" },
-        { label: "TO", location: "Cox's Bazar", code: "CXB" },
-        { label: "JOURNEY DATE", date: "14 Jul'25" },
-        { label: "TRAVELER, CLASS", traveler: "1 Traveler", class: "Economy" },
-      ],
-    },
-  ];
-
-  const currentTrip = data.find((item) => item.tripType === tripType);
+ 
 
   return (
     <div className="bg-[#ecf1f5] min-h-screen p-6 space-y-6">
       {/* Trip Type Selector */}
-      <div className="bg-white p-4 rounded-md shadow-md flex gap-4">
-        <Button
-          variant={tripType === "one-way" ? "default" : "outline"}
-          onClick={() => setTripType("one-way")}
-        >
-          One Way
-        </Button>
-        <Button
-          variant={tripType === "round-way" ? "default" : "outline"}
-          onClick={() => setTripType("round-way")}
-        >
-          Round Way
-        </Button>
-        <Button
-          variant={tripType === "multi-city" ? "default" : "outline"}
-          onClick={() => setTripType("multi-city")}
-        >
-          Multi-City
-        </Button>
-      </div>
+  <FlightForm/>
 
       {/* Trip Summary Header */}
-      {currentTrip && (
-        <div className="bg-white p-4 rounded-md shadow-md flex items-center justify-between">
-          <div className="text-sm text-gray-700 flex flex-wrap gap-4">
-            <span className="font-semibold text-black">
-              {currentTrip.fields.find((f) => f.label === "FROM")?.location}
-            </span>
-            ➝
-            <span className="font-semibold text-black">
-              {currentTrip.fields.find((f) => f.label === "TO")?.location}
-            </span>
-            <span>
-              {currentTrip.fields.find((f) => f.label === "JOURNEY DATE")?.date}
-            </span>
-            <span>
-              {
-                currentTrip.fields.find((f) => f.label === "TRAVELER, CLASS")
-                  ?.traveler
-              }
-            </span>
-            <span>
-              {
-                currentTrip.fields.find((f) => f.label === "TRAVELER, CLASS")
-                  ?.class
-              }
-            </span>
-          </div>
-          <Button className="bg-yellow-400 text-black font-bold">
-            Modify Search
-          </Button>
-        </div>
-      )}
+     
 
       {/* Main Content */}
       <div className="flex gap-4 container mx-auto">
