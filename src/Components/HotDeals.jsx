@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from 'react';
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const deals = [
   {
@@ -9,8 +10,7 @@ const deals = [
     title: "Up to 18% Discount on Int’l Flight Bookings",
     description: "On base fare, for City Bank American Express® Platinum & Gold credit cards. Till 31 Dec’25.",
     code: "AMEX1825",
-    image: "https://i.ibb.co/R4zSt8v9/download-7.png", 
-    bgColor: "bg-[#0D1D74]",
+    image: "https://i.ibb.co/R4zSt8v9/download-7.png",
   },
   {
     id: 2,
@@ -19,7 +19,6 @@ const deals = [
     description: "On base fare, for bKash payment. Till 31 August’25.",
     code: "DOMB0725",
     image: "https://i.ibb.co/b5XPrhPz/download-11.png",
-    bgColor: "bg-[#0D1D74]",
   },
   {
     id: 3,
@@ -28,7 +27,6 @@ const deals = [
     description: "On base fare, for bKash payment. Till 31 Dec’25.",
     code: "INTB0725",
     image: "https://i.ibb.co/b5XPrhPz/download-11.png",
-    bgColor: "bg-[#0D1D74]",
   },
   {
     id: 4,
@@ -37,32 +35,40 @@ const deals = [
     description: "On base fare, for bKash payment. Till 31 August’25..",
     code: "INTB0725",
     image: "https://i.ibb.co/b5XPrhPz/download-11.png",
-    bgColor: "bg-[#0D1D74]",
   },
   {
     id: 5,
     discount: "65%",
     title: "On Domestic Hotel Bookings for bKash",
     description: "On room rate, for bKash payment.Till 31 August’25.",
-    code: " STAYB0725",
+    code: "STAYB0725",
     image: "https://i.ibb.co/b5XPrhPz/download-11.png",
-    bgColor: "bg-[#0D1D74]",
   },
   {
     id: 6,
     discount: "7%",
     title: 'on Domestic  International Flight Booking',
     description: "On base fare, for any card payments. Till 31 August’25..",
-    code: " GOFLY0725",
+    code: "GOFLY0725",
     image: "https://i.ibb.co/b5XPrhPz/download-11.png",
-    bgColor: "bg-[#0D1D74]",
   },
 ];
 
 export default function HotDeals() {
+  const flickingRef = useRef(null);
+
+  const handlePrev = () => {
+    flickingRef.current?.prev();
+  };
+
+  const handleNext = () => {
+    flickingRef.current?.next();
+  };
+
   return (
     <section className="bg-[#f1f6fc] py-8 px-4 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
+
         {/* Title and Tabs */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-[#0b0d4f] font-bold text-2xl">Hot Deals</h2>
@@ -78,8 +84,17 @@ export default function HotDeals() {
           </div>
         </div>
 
+        {/* Left Arrow */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+        >
+          <FaArrowLeft className="text-[#0b0d4f]" />
+        </button>
+
         {/* Flicking Slider */}
         <Flicking
+          ref={flickingRef}
           circular={false}
           moveType="freeScroll"
           align="prev"
@@ -127,6 +142,14 @@ export default function HotDeals() {
             </div>
           ))}
         </Flicking>
+
+        {/* Right Arrow */}
+        <button
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+        >
+          <FaArrowRight className="text-[#11158a]" />
+        </button>
       </div>
     </section>
   );
