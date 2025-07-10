@@ -226,3 +226,105 @@
 //               </div>
 
 //             </div>
+
+
+
+
+
+
+
+ {showTravelerDropdown && (
+        <div className="absolute left-0 right-0 bg-white border rounded-xl shadow-lg z-50 mt-2 mx-6 max-w-md">
+          <div className="p-4">
+            {[
+              { label: "Adults", desc: "12 years and above", key: "adults" },
+              { label: "Children", desc: "2–11 years", key: "children" },
+              { label: "Infant", desc: "Below 2 years", key: "infants" },
+            ].map((item, index) => (
+              <div key={index} className="flex justify-between items-center py-2 border-b">
+                <div>
+                  <p className="font-medium text-sm">{item.label}</p>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() =>
+                      setTravelers((prev) => ({
+                        ...prev,
+                        [item.key]:
+                          Math.max(prev[item.key] - 1, item.key === "adults" ? 1 : 0),
+                      }))
+                    }
+                    className="w-8 h-8 rounded-full border text-lg text-gray-600"
+                  >
+                    −
+                  </button>
+                  <span className="min-w-[20px] text-center">{travelers[item.key]}</span>
+                  <button
+                    onClick={() =>
+                      setTravelers((prev) => ({
+                        ...prev,
+                        [item.key]: prev[item.key] + 1,
+                      }))
+                    }
+                    className="w-8 h-8 rounded-full border text-lg text-gray-600"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
+            <div className="pt-4">
+              <p className="font-medium text-sm mb-2">Class</p>
+              <div className="flex gap-6">
+                {["Economy", "Business"].map((cls) => (
+                  <label key={cls} className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="travelClass"
+                      checked={travelers.class === cls}
+                      onChange={() => setTravelers((prev) => ({ ...prev, class: cls }))}
+                      className="accent-blue-600"
+                    />
+                    <span className="text-sm">{cls}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => {
+                  const updated = data.map((trip) => {
+                    if (trip.tripType === tripType) {
+                      const newFields = trip.fields.map((f) =>
+                        f.label === "TRAVELER, CLASS"
+                          ? {
+                              ...f,
+                              traveler: `${travelers.adults + travelers.children + travelers.infants} Traveler`,
+                              class: travelers.class,
+                            }
+                          : f
+                      );
+                      return { ...trip, fields: newFields };
+                    }
+                    return trip;
+                  });
+                  setData(updated);
+                  setShowTravelerDropdown(false);
+                }}
+                className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 rounded font-semibold"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+        const [travelers, setTravelers] = useState({
+          adults: 1,
+          children: 0,
+          infants: 0,
+          class: "Economy",
+        });
