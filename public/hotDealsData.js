@@ -1,0 +1,58 @@
+const hotDealsData = [
+  {
+    id: 1,
+    discount: "18%",
+    title: "Up to 18% Discount on Int’l Flight Bookings",
+    description: "On base fare, for City Bank American Express® Platinum & Gold credit cards. Till 31 Dec’25.",
+    code: "AMEX1825",
+    image: "https://i.ibb.co/R4zSt8v9/download-7.png", 
+    bgColor: "bg-[#0D1D74]",
+  },
+  {
+    id: 2,
+    discount: "10%",
+    title: "On Domestic Flight Booking",
+    description: "On base fare, for bKash payment. Till 31 August’25.",
+    code: "DOMB0725",
+    image: "https://i.ibb.co/b5XPrhPz/download-11.png",
+    bgColor: "bg-[#0D1D74]",
+  },
+  {
+    id: 3,
+    discount: "11%",
+    title: "On Intl Flight Booking",
+    description: "On base fare, for bKash payment. Till 31 Dec’25.",
+    code: "INTB0725",
+    image: "https://i.ibb.co/b5XPrhPz/download-11.png",
+    bgColor: "bg-[#0D1D74]",
+  },
+  {
+    id: 4,
+    discount: "11%",
+    title: "On International Flight Booking",
+    description: "On base fare, for bKash payment. Till 31 August’25..",
+    code: "INTB0725",
+    image: "https://i.ibb.co/b5XPrhPz/download-11.png",
+    bgColor: "bg-[#0D1D74]",
+  },
+  {
+    id: 5,
+    discount: "65%",
+    title: "On Domestic Hotel Bookings for bKash",
+    description: "On room rate, for bKash payment.Till 31 August’25.",
+    code: " STAYB0725",
+    image: "https://i.ibb.co/b5XPrhPz/download-11.png",
+    bgColor: "bg-[#0D1D74]",
+  },
+  {
+    id: 6,
+    discount: "7%",
+    title: 'on Domestic  International Flight Booking',
+    description: "On base fare, for any card payments. Till 31 August’25..",
+    code: " GOFLY0725",
+    image: "https://i.ibb.co/b5XPrhPz/download-11.png",
+    bgColor: "bg-[#0D1D74]",
+  },
+];
+
+export default hotDealsData;

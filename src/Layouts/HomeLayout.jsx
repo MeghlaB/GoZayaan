@@ -3,7 +3,7 @@ import Footer from '../Components/Footer/Footer'
 import FlightBanner from '../FlightBanner'
 import { Outlet } from 'react-router-dom'
 import BookingCarousel from '../Components/BookingCarousel/BookingCarousel'
-import HotDeals from '../Components/HotDeals/HotDeals'
+
 
 function HomeLayout() {
     return (
@@ -13,10 +13,10 @@ function HomeLayout() {
                 <Outlet />
             </div>
             {/* Carousel section  */}
-            <BookingCarousel></BookingCarousel>
+            
 
             {/* Hot Deals carousel */}
-            <HotDeals></HotDeals>
+            
 
             {/* Footer Section */}
             <Footer></Footer>
