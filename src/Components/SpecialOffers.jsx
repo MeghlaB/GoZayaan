@@ -26,19 +26,19 @@ const allDeals = [
         id: 4,
         category: "Flight",
         title: "Save 25% on Emirates Flights to Europe",
-        image: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Emirates_logo.svg",
+        image: "https://photos.nomadicnotes.com/img/s/v-3/p2796525377-4.jpg",
     },
     {
         id: 5,
         category: "Flight",
         title: "Qatar Airways: Special fares to over 100 destinations",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Qatar_Airways_Logo.svg/512px-Qatar_Airways_Logo.svg.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFr3F3xA3hJelYwqlpH2BSh8fb6b7wtcetaw&s",
     },
     {
         id: 6,
         category: "Flight",
         title: "Singapore Airlines: Student Discount & Extra Baggage",
-        image: "https://upload.wikimedia.org/wikipedia/en/3/36/Singapore_Airlines_Logo.svg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ4fJdDMGlxsjPTWFwS6O0_e5lyM741dF4gsNegROxnqOn2YvkO7-jJNGGVD646mH0UDw&usqp=CAU",
     },
     {
         id: 7,
@@ -199,7 +199,7 @@ const SpecialOffers = () => {
                                 <img
                                     src={d.image}
                                     alt={d.title}
-                                    className="object-contain max-h-full max-w-full"
+                                    className="w-full h-full object-cover p-1 rounded-2xl"
                                 />
                             </div>
                             <div className="p-4 flex-1 flex flex-col relative justify-between">
