@@ -12,7 +12,7 @@ function HomeLayout() {
                 <Outlet />
             </div>
             {/* Carousel section  */}
-            <BookingCarousel></BookingCarousel>
+            
 
             {/* Footer Section */}
             <Footer></Footer>

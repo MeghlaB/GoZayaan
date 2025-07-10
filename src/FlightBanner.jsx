@@ -217,7 +217,7 @@ const FlightBanner = () => {
   };
 
   return (
-    <div className="w-full min-h-[650px] relative flex flex-col items-center overflow-hidden">
+    <div className="w-full min-h-[750px] relative flex flex-col items-center overflow-hidden ">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
@@ -422,7 +422,7 @@ const FlightBanner = () => {
             {showLocationDropdown && (
               <div
                 ref={locationDropdownRef}
-                className="absolute inset-x-0 top-full sm:left-0 sm:inset-x-auto mx-4 sm:mx-0 sm:max-w-md bg-white border rounded-xl shadow-lg z-50 mt-2 w-auto px-4 sm:px-0"
+                className="absolute inset-x-0 z-50 sm:left-0 sm:inset-x-auto mx-4 sm:mx-0 sm:max-w-md bg-white border rounded-xl shadow-lg z-50 mt-2 w-auto px-4 sm:px-0"
                 style={{ maxWidth: "90vw" }}
               >
                 <div className="p-4 border-b">
