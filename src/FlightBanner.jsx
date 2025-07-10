@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
 
 const chunkArray = (arr, size) => {
   const chunks = [];
@@ -553,9 +554,10 @@ const FlightBanner = () => {
 
             {/* Search Button */}
             <div className="mt-6 flex justify-center px-4 sm:px-0">
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl shadow-md w-full sm:w-auto max-w-md text-sm sm:text-base">
+             <Link to={'/search'}> <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl shadow-md w-full sm:w-auto max-w-md text-sm sm:text-base">
                 Search
-              </button>
+              </button></Link>
+
             </div>
           </div>
         </div>

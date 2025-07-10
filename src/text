@@ -234,6 +234,7 @@
 
 
  {showTravelerDropdown && (
+
         <div className="absolute left-0 right-0 bg-white border rounded-xl shadow-lg z-50 mt-2 mx-6 max-w-md">
           <div className="p-4">
             {[
@@ -328,3 +329,43 @@
           infants: 0,
           class: "Economy",
         });
+
+
+
+
+
+
+
+          {
+            airline: "NOVOAIR",
+            logo: "/src/assets/novoair.png",
+            depart: "18:30",
+            arrive: "19:35",
+            duration: "1h 5m",
+            price: 4797,
+          },
+          {
+            airline: "Biman Bangladesh Airlines",
+            logo: "/src/assets/biman-bangla.jpeg",
+            depart: "15:30",
+            arrive: "16:45",
+            duration: "1h 15m",
+            price: 5747,
+          },
+          {
+            airline: "NOVOAIR",
+            logo: "/src/assets/novoair.png",
+            depart: "18:30",
+            arrive: "19:35",
+            duration: "1h 5m",
+            price: 4797,
+          },
+          
+          {
+            airline: "NOVOAIR",
+            logo: "/src/assets/novoair.png",
+            depart: "18:30",
+            arrive: "19:35",
+            duration: "1h 5m",
+            price: 4797,
+          },
