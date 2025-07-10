@@ -3,6 +3,7 @@ import BookingCarousel from '../BookingCarousel/BookingCarousel'
 import GoLimitlessBanner from '../GoLimitlessBanner'
 import HotDeals from '../HotDeals'
 import StudentOfferBanner from '../StudentOfferBanner'
+import SpecialOffers from '../SpecialOffers'
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <GoLimitlessBanner/>
       <HotDeals/>
       <StudentOfferBanner/>
+      <SpecialOffers></SpecialOffers>
     </div>
   )
 }
