@@ -217,7 +217,7 @@ const FlightBanner = () => {
   };
 
   return (
-    <div className="w-full min-h-screen relative flex flex-col items-center overflow-hidden">
+    <div className="w-full min-h-[650px] relative flex flex-col items-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{

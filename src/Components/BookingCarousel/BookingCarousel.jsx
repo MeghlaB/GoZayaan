@@ -34,19 +34,19 @@ const cards = [
 function BookingCarousel() {
     const [modalUrl, setModalUrl] = useState("");
     const [isOpen, setIsOpen] = useState(false);
-    // State to control how many panels are visible at once
+    
     const [panelsPerView, setPanelsPerView] = useState(3);
 
-    // Effect hook to handle responsive panel display
+
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
             if (width < 640) {
-                setPanelsPerView(1); // Small devices (e.g., mobile): 1 item per view
+                setPanelsPerView(1)
             } else if (width < 1024) {
-                setPanelsPerView(2); // Medium devices (e.g., tablet): 2 items per view
+                setPanelsPerView(2); 
             } else {
-                setPanelsPerView(3); // Large devices (e.g., desktop): 3 items per view
+                setPanelsPerView(3); 
             }
         };
 
