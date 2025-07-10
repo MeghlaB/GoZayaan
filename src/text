@@ -368,4 +368,311 @@
             arrive: "19:35",
             duration: "1h 5m",
             price: 4797,
-          },
+          // },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {/* Trip Type */}
+          <div className="flex flex-wrap justify-center gap-4  bg-white px-4 py-3 rounded-t-xl shadow-md  text-sm max-w-2xl md:max-w-2xl  ">
+            {["flight", "hotel", "tour", "visa"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`flex items-center gap-2 px-4 py-2 font-medium rounded-md whitespace-nowrap ${
+                  activeTab === tab
+                    ? "border-b-2 border-yellow-400 text-blue-800"
+                    : "text-gray-600 hover:text-blue-800"
+                }`}
+              >
+                {tab === "flight" && <FaPlaneDeparture />}
+                {tab === "hotel" && <FaHotel />}
+                {tab === "tour" && <FaSuitcaseRolling />}
+                {tab === "visa" && <FaPassport />}
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          {/* Flight Form */}
+          <div className="w-full max-w-6xl bg-white rounded-3xl shadow-lg px-6 py-6 relative">
+            {/* Trip Type Selector */}
+            <div className="flex flex-wrap justify-center gap-5 text-sm mb-6">
+              {["one-way", "round-way", "multi-city"].map((type) => (
+                <label
+                  key={type}
+                  className="flex items-center gap-2 whitespace-nowrap"
+                >
+                  <input
+                    type="radio"
+                    name="tripType"
+                    value={type}
+                    checked={tripType === type}
+                    onChange={() => setTripType(type)}
+                    className="accent-blue-600"
+                  />
+                  <span className="text-blue-800 font-semibold capitalize">
+                    {type.replace("-", " ")}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            {/* Fields */}
+            {(tripType === "multi-city"
+              ? chunkArray(currentTrip?.fields || [], 4)
+              : [currentTrip?.fields || []]
+            ).map((group, rowIndex) => (
+              <div
+                key={rowIndex}
+                className={`grid gap-4 mb-4 ${
+                  tripType === "multi-city"
+                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
+                    : "grid-cols-1 sm:grid-cols-2 md:grid-cols-5"
+                }`}
+              >
+                {group.map((field, idx) => {
+                  if (
+                    (field.label === "JOURNEY DATE" ||
+                      field.label === "RETURN DATE") &&
+                    (tripType === "one-way" || tripType === "round-way")
+                  ) {
+                    return (
+                      <div
+                        key={idx}
+                        className="border rounded-xl p-3 min-w-0 flex-1 relative cursor-pointer"
+                      >
+                        <p className="text-gray-400 text-xs mb-1">{field.label}</p>
+                        <DatePicker
+                          selected={
+                            field.label === "JOURNEY DATE" ? journeyDate : returnDate
+                          }
+                          onChange={(date) =>
+                            field.label === "JOURNEY DATE"
+                              ? setJourneyDate(date)
+                              : setReturnDate(date)
+                          }
+                          dateFormat="dd MMM ''yy"
+                          className="text-blue-800 font-bold w-full"
+                          calendarClassName="rounded-xl shadow-lg"
+                          minDate={
+                            field.label === "RETURN DATE" ? journeyDate : new Date()
+                          }
+                        />
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        if (field.label === "TRAVELER, CLASS") {
+                          setShowTravelerDropdown((prev) => !prev);
+                          setShowLocationDropdown(false);
+                        } else {
+                          handleLocationClick(field);
+                        }
+                      }}
+                      className={`border rounded-xl p-3 min-w-0 flex-1 relative cursor-pointer ${
+                        field.isAddMore ? "text-blue-600 font-semibold" : ""
+                      }`}
+                    >
+                      <p className="text-gray-400 text-xs mb-1">{field.label}</p>
+                      {field.location ? (
+                        <>
+                          <h4 className="text-blue-800 font-bold truncate">
+                            {field.location}
+                          </h4>
+                          <p className="text-xs truncate">
+                            {field.code}, {field.airport}
+                          </p>
+                          {tripType !== "multi-city" && field.label === "FROM" && (
+                            <div
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                swapLocations();
+                              }}
+                              className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-8 h-8 rounded-full flex items-center justify-center sm:w-10 sm:h-10"
+                            >
+                              <FaExchangeAlt className="text-blue-800" />
+                            </div>
+                          )}
+                        </>
+                      ) : field.traveler ? (
+                        <>
+                          <h4 className="text-blue-800 font-bold truncate">
+                            {field.traveler}
+                          </h4>
+                          <p className="text-xs">{field.class}</p>
+                        </>
+                      ) : field.isAddMore ? (
+                        <button className="text-blue-600 font-semibold hover:underline whitespace-nowrap text-sm sm:text-base">
+                          + Add Another City
+                        </button>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+
+            {/* Location Dropdown */}
+            {showLocationDropdown && (
+              <div
+                ref={locationDropdownRef}
+                className="absolute inset-x-0 z-50 sm:left-0 sm:inset-x-auto mx-4 sm:mx-0 sm:max-w-md bg-white border rounded-xl shadow-lg z-50 mt-2 w-auto px-4 sm:px-0"
+                style={{ maxWidth: "90vw" }}
+              >
+                <div className="p-4 border-b">
+                  <div className="relative">
+                    <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Search for city or airport"
+                      className="w-full pl-10 pr-10 py-2 border rounded-lg text-base"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      autoFocus
+                    />
+                    <button
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                      onClick={() => setShowLocationDropdown(false)}
+                    >
+                      <FaTimes />
+                    </button>
+                  </div>
+                </div>
+                <div className="max-h-[70vh] overflow-y-auto">
+                  {filteredAirports.length > 0 ? (
+                    filteredAirports.map((airport, index) => (
+                      <div
+                        key={index}
+                        className="p-3 hover:bg-blue-50 cursor-pointer border-b"
+                        onClick={() => selectAirport(airport)}
+                      >
+                        <div className="flex justify-between">
+                          <span className="font-semibold">{airport.city}</span>
+                          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {airport.code}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500">{airport.airport}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="p-4 text-center text-gray-500">No airports found</div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Traveler Dropdown */}
+            {showTravelerDropdown && (
+              <div
+                ref={travelerDropdownRef}
+                className="absolute right-0 left-auto sm:left-auto bg-white border rounded-xl shadow-lg z-50 mt-2 max-w-md mx-6"
+                style={{ maxWidth: "90vw" }}
+              >
+                <div className="p-4">
+                  {[
+                    {
+                      label: "Adults",
+                      desc: "12 years and above",
+                      key: "adults",
+                    },
+                    { label: "Children", desc: "2–11 years", key: "children" },
+                    { label: "Infant", desc: "Below 2 years", key: "infants" },
+                  ].map(({ label, desc, key }) => (
+                    <div
+                      key={key}
+                      className="flex justify-between items-center py-2 border-b"
+                    >
+                      <div>
+                        <p className="font-semibold">{label}</p>
+                        <p className="text-xs text-gray-500">{desc}</p>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <button
+                          disabled={travelers[key] === 0}
+                          onClick={() =>
+                            setTravelers((prev) => ({
+                              ...prev,
+                              [key]: Math.max(prev[key] - 1, 0),
+                            }))
+                          }
+                          className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold disabled:opacity-40"
+                        >
+                          -
+                        </button>
+                        <span>{travelers[key]}</span>
+                        <button
+                          onClick={() =>
+                            setTravelers((prev) => ({
+                              ...prev,
+                              [key]: prev[key] + 1,
+                            }))
+                          }
+                          className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Class selector */}
+                  <div className="py-2">
+                    <label className="font-semibold block mb-1">Class</label>
+                    <select
+                      value={travelers.class}
+                      onChange={(e) =>
+                        setTravelers((prev) => ({ ...prev, class: e.target.value }))
+                      }
+                      className="w-full border rounded px-3 py-2"
+                    >
+                      <option>Economy</option>
+                      <option>Premium Economy</option>
+                      <option>Business</option>
+                      <option>First</option>
+                    </select>
+                  </div>
+
+                  <div className="flex justify-end mt-4">
+                    <button
+                      onClick={() => setShowTravelerDropdown(false)}
+                      className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded-xl"
+                    >
+                      Done
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Search Button */}
+            <div className="mt-6 flex justify-center px-4 sm:px-0">
+             <Link to={'/sea'}> <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl shadow-md w-full sm:w-auto max-w-md text-sm sm:text-base">
+                Search
+              </button></Link>
+
+            </div>
+          </div>
