@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "/src/Components/ui/Button";
 import { Card, CardContent } from "/src/Components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "/src/Components/ui/tabs";
@@ -8,6 +8,7 @@ import {
   Phone,
   MessageCircle,
   Timer,
+  Clock,
 } from "lucide-react";
 import { BiChevronDown } from "react-icons/bi";
 
@@ -64,6 +65,29 @@ const flights = [
 
 export default function FlightBookingUI() {
   const [tripType, setTripType] = useState("one-way");
+  const [expanded, setExpanded] = useState(false);
+
+  const [timeLeft, setTimeLeft] = useState(40 * 60); // 40 minutes in seconds
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup on unmount
+  }, []);
+
+  const formatTime = (seconds) => {
+    const min = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const sec = String(seconds % 60).padStart(2, "0");
+    return `${min}:${sec}`;
+  };
 
   const data = [
     {
@@ -108,18 +132,14 @@ export default function FlightBookingUI() {
         <div className="bg-white p-4 rounded-md shadow-md flex items-center justify-between">
           <div className="text-sm text-gray-700 flex flex-wrap gap-4">
             <span className="font-semibold text-black">
-              {
-                currentTrip.fields.find((f) => f.label === "FROM")?.location
-              }
+              {currentTrip.fields.find((f) => f.label === "FROM")?.location}
             </span>
             ➝
             <span className="font-semibold text-black">
               {currentTrip.fields.find((f) => f.label === "TO")?.location}
             </span>
             <span>
-              {
-                currentTrip.fields.find((f) => f.label === "JOURNEY DATE")?.date
-              }
+              {currentTrip.fields.find((f) => f.label === "JOURNEY DATE")?.date}
             </span>
             <span>
               {
@@ -163,7 +183,10 @@ export default function FlightBookingUI() {
           </div>
 
           {/* Flight Results */}
-          <Tabs defaultValue="cheapest" className="bg-white rounded-md shadow-md">
+          <Tabs
+            defaultValue="cheapest"
+            className="bg-white rounded-md shadow-md"
+          >
             <TabsList className="grid grid-cols-2 w-full">
               <TabsTrigger value="cheapest">Cheapest</TabsTrigger>
               <TabsTrigger value="fastest">Fastest</TabsTrigger>
@@ -171,7 +194,10 @@ export default function FlightBookingUI() {
 
             <CardContent className="p-4 space-y-4">
               {flights.map((flight, idx) => (
-                <div key={idx} className="bg-white border  rounded-md  shadow-sm">
+                <div
+                  key={idx}
+                  className="bg-white border rounded-md shadow-sm mb-4"
+                >
                   <Card className="flex justify-between items-center p-4">
                     {/* Airline Info */}
                     <div className="flex gap-4 items-center w-1/4">
@@ -224,15 +250,99 @@ export default function FlightBookingUI() {
                     </div>
                   </Card>
 
-                  {/* Footer (Partially Refundable + Flight Details) */}
+                  {/* Footer */}
                   <div className="border-t text-sm text-gray-600 px-4 py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 cursor-pointer">
                       Partially Refundable <BiChevronDown size={16} />
                     </div>
-                    <div className="flex items-center gap-2 text-blue-600 cursor-pointer">
-                      Flight Details <BiChevronDown size={16} />
+                    <div
+                      onClick={() => setExpanded(!expanded)}
+                      className="flex items-center gap-2 text-blue-600 cursor-pointer"
+                    >
+                      Flight Details{" "}
+                      <BiChevronDown
+                        size={16}
+                        className={`${
+                          expanded ? "rotate-180" : ""
+                        } transition-transform`}
+                      />
                     </div>
                   </div>
+
+                  {/* Expandable Section */}
+                  {expanded && (
+                    <div className="border-t flex text-sm">
+                      {/* Left: Flight Info */}
+                      <div className="w-1/2 p-4 border-r space-y-2">
+                        <div className="font-bold text-center text-[#1c1c1c]">
+                          Flight Details
+                        </div>
+                        <div className="text-center bg-[#003366] text-white py-1 rounded-md w-fit mx-auto px-3 text-xs font-semibold">
+                          {flight.origin} - {flight.destination}
+                        </div>
+                        <div className="flex justify-between text-[#1c1c1c] mt-4">
+                          <div className="font-semibold">
+                            {flight.airline.toUpperCase()}
+                          </div>
+                          <div className="text-gray-500">(Economy)</div>
+                        </div>
+                        <div className="text-gray-500 text-xs mt-1">
+                          VQ 935 | ATR725
+                        </div>
+                        <div className="flex justify-between items-center mt-4">
+                          <div>
+                            <div className="font-semibold text-lg">18:30</div>
+                            <div className="text-gray-500 text-xs">
+                              Tue, 15 Jul, 2025
+                            </div>
+                            <div className="text-xs">DAC</div>
+                          </div>
+                          <div className="text-xs text-center">
+                            <ArrowRight className="mx-auto mb-1" size={18} />
+                            {flight.duration}
+                          </div>
+                          <div>
+                            <div className="font-semibold text-lg">19:35</div>
+                            <div className="text-gray-500 text-xs">
+                              Tue, 15 Jul, 2025
+                            </div>
+                            <div className="text-xs">CXB</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right: Baggage Info */}
+                      <div className="w-1/2 p-4">
+                        <div className="flex gap-6 border-b pb-2 mb-2">
+                          <div className="text-[#003366] font-semibold border-b-2 border-[#003366] pb-1">
+                            Baggage
+                          </div>
+                          <div className="text-gray-500">Fare</div>
+                          <div className="text-gray-500">Policy</div>
+                        </div>
+                        <div className="flex justify-between mb-2">
+                          <div className="text-gray-600">Flight</div>
+                          <div className="text-gray-900">
+                            {flight.origin} - {flight.destination}
+                          </div>
+                        </div>
+                        <div className="flex justify-between mb-2">
+                          <div className="text-gray-600">Cabin</div>
+                          <div className="text-gray-900">7 KGS</div>
+                        </div>
+                        <div className="flex justify-between mb-2">
+                          <div className="text-gray-600">Check-in</div>
+                          <div className="text-gray-900">20 KGS</div>
+                        </div>
+                        <div className="bg-[#ecf5ff] px-4 py-2 mt-4 text-[#003366] font-semibold rounded-md flex justify-between items-center">
+                          <span>Total (1 Traveler)</span>
+                          <span className="text-right font-bold">
+                            BDT 5,199
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </CardContent>
@@ -243,16 +353,25 @@ export default function FlightBookingUI() {
         <div className="w-1/4 space-y-4">
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-gray-500 text-sm">⏳</div>
-              <div className="text-xl font-bold">39:45</div>
-              <div className="text-sm text-gray-500">min sec</div>
+              <div className=" flex items-center justify-center gap-7">
+                <div className="text-gray-500 text-xl">
+                  <Clock />
+                </div>
+                <div>
+                  <div className="text-xl text-blue-900 font-bold">
+                    {formatTime(timeLeft)}
+                  </div>
+                  <div className="text-sm text-gray-500">min sec</div>
+                </div>
+              </div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4">
-              <div className="font-semibold text-sm mb-2">
+            <CardContent className="p-4 space-y-5">
+              <div className="font-semibold text-sm mb-2 bg-gradient-to-r from-blue-900 to-blue-700 text-white px-4 py-2 rounded-md">
                 We're here for you 24/7
               </div>
+
               <div className="flex items-center gap-2 text-sm mb-1">
                 <Phone size={16} /> +88 09678 332211
               </div>
