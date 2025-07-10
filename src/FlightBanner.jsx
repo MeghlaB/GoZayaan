@@ -7,22 +7,144 @@ import {
   FaExchangeAlt,
 } from "react-icons/fa";
 
+const chunkArray = (arr, size) => {
+  const chunks = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  return chunks;
+};
+
 const FlightBanner = () => {
   const [activeTab, setActiveTab] = useState("flight");
   const [tripType, setTripType] = useState("one-way");
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const data = [
+    {
+      tripType: "one-way",
+      fields: [
+        {
+          label: "FROM",
+          location: "Dhaka",
+          code: "DAC",
+          airport: "Hazrat Shahjalal International Airport",
+        },
+        {
+          label: "TO",
+          location: "Cox's Bazar",
+          code: "CXB",
+          airport: "Cox's Bazar Airport",
+        },
+        {
+          label: "JOURNEY DATE",
+          date: "14 Jul'25",
+          day: "Monday",
+        },
+        {
+          label: "RETURN DATE",
+          note: "Save more on return flight",
+          isDisabled: true,
+        },
+        {
+          label: "TRAVELER, CLASS",
+          traveler: "1 Traveler",
+          class: "Economy",
+        },
+      ],
+    },
+    {
+      tripType: "round-way",
+      fields: [
+        {
+          label: "FROM",
+          location: "Dhaka",
+          code: "DAC",
+          airport: "Hazrat Shahjalal International Airport",
+        },
+        {
+          label: "TO",
+          location: "Cox's Bazar",
+          code: "CXB",
+          airport: "Cox's Bazar Airport",
+        },
+        {
+          label: "JOURNEY DATE",
+          date: "15 Jul'25",
+          day: "Tuesday",
+        },
+        {
+          label: "RETURN DATE",
+          date: "16 Jul'25",
+          day: "Wednesday",
+        },
+        {
+          label: "TRAVELER, CLASS",
+          traveler: "1 Traveler",
+          class: "Economy",
+        },
+      ],
+    },
+    {
+      tripType: "multi-city",
+      fields: [
+        {
+          label: "FROM",
+          location: "Dhaka",
+          code: "DAC",
+          airport: "Hazrat Shahjalal International Airport",
+        },
+        {
+          label: "TO",
+          location: "Cox's Bazar",
+          code: "CXB",
+          airport: "Cox's Bazar Airport",
+        },
+        {
+          label: "JOURNEY DATE",
+          date: "14 Jul'25",
+          day: "Monday",
+        },
+        {
+          label: "FROM",
+          location: "Chittagong",
+          code: "CGP",
+          airport: "Shah Amanat International Airport",
+        },
+        {
+          label: "TO",
+          location: "Sylhet",
+          code: "ZYL",
+          airport: "Osmani International Airport",
+        },
+        {
+          label: "JOURNEY DATE",
+          date: "15 Jul'25",
+          day: "Tuesday",
+        },
+        {
+          label: "Add Another city",
+          isAddMore: true,
+        },
+        {
+          label: "TRAVELER, CLASS",
+          traveler: "1 Traveler",
+          class: "Economy",
+        },
+      ],
+    },
+  ];
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const currentTrip = data.find((trip) => trip.tripType === tripType);
+
   return (
-    <div className="w-full min-h-screen relative flex flex-col items-center">
-      {/* Background Image */}
+    <div className="w-full min-h-screen relative flex flex-col items-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
@@ -31,74 +153,82 @@ const FlightBanner = () => {
         }}
       />
 
-      {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center">
-        {/* Navbar + Tabs */}
         <div
           className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             isScrolled ? "bg-white shadow-md" : ""
           }`}
         >
-          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-            {/* Navbar */}
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center gap-2">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10 relative">
+            <div className="flex items-center justify-between py-4">
+              <div className="flex items-center gap-2 shrink-0">
                 <img
                   src="https://i.ibb.co/rGHgJTF4/download-9.jpg"
                   alt="logo"
                   className="h-6"
                 />
-                <span className="font-bold text-xl text-[#000E6E]">
-                  gozayaan
-                </span>
+                <span className="font-bold text-xl text-[#000E6E]">gozayaan</span>
               </div>
-              <div className="flex items-center gap-4">
+
+              {isScrolled && (
+                <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-4 bg-white px-4 py-2 rounded-xl shadow-md">
+                  {["flight", "hotel", "tour", "visa"].map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`flex items-center gap-2 px-3 py-1 text-sm font-medium ${
+                        activeTab === tab
+                          ? "border-b-2 border-yellow-400 text-blue-800"
+                          : "text-gray-600"
+                      } hover:text-blue-800`}
+                    >
+                      {tab === "flight" && <FaPlaneDeparture />} 
+                      {tab === "hotel" && <FaHotel />} 
+                      {tab === "tour" && <FaSuitcaseRolling />} 
+                      {tab === "visa" && <FaPassport />} 
+                      {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div className="flex items-center gap-4 shrink-0">
                 <span className="text-sm text-black font-medium">BDT</span>
                 <button className="bg-[#000E6E] hover:bg-blue-900 text-white px-4 py-1 rounded font-medium">
                   Sign In
                 </button>
               </div>
             </div>
-
-            {/* Tabs */}
-            {/* Tabs */}
-            <div className="w-full  bg-white border-t border-gray-200">
-              <div className="min-w-2xl mx-auto flex justify-center space-x-8 py-3">
-                {[
-                  { id: "flight", icon: <FaPlaneDeparture />, label: "Flight" },
-                  { id: "hotel", icon: <FaHotel />, label: "Hotel" },
-                  { id: "tour", icon: <FaSuitcaseRolling />, label: "Tour" },
-                  { id: "visa", icon: <FaPassport />, label: "Visa" },
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-4 py-2 font-medium text-gray-600 hover:text-blue-800 ${
-                      activeTab === tab.id
-                        ? "border-b-2 border-yellow-400 text-blue-800"
-                        : ""
-                    }`}
-                  >
-                    {tab.icon} {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Main Content */}
-        <div
-          className={`w-full flex flex-col items-center px-4 pb-10 ${
-            isScrolled ? "pt-[160px]" : "pt-32"
-          }`}
-        >
-          {/* Search Form */}
-          <div className="w-full max-w-6xl bg-white rounded-3xl shadow-lg px-6 py-6">
-            {/* Trip Type */}
+        <div className={`w-full flex flex-col items-center px-4 pb-10 ${isScrolled ? "pt-[160px]" : "pt-30"}`}>
+          {!isScrolled && (
+            <div className="bg-white rounded-xl shadow-md mb-0 px-6 py-3 flex gap-6">
+              {["flight", "hotel", "tour", "visa"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex items-center gap-2 px-4 py-2 font-medium ${
+                    activeTab === tab
+                      ? "border-b-2 border-yellow-400 text-blue-800"
+                      : "text-gray-600 hover:text-blue-800"
+                  }`}
+                >
+                  {tab === "flight" && <FaPlaneDeparture />} 
+                  {tab === "hotel" && <FaHotel />} 
+                  {tab === "tour" && <FaSuitcaseRolling />} 
+                  {tab === "visa" && <FaPassport />} 
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="w-full max-w-6xl bg-white rounded-3xl shadow-lg px-6 py-3 mt-6">
             <div className="flex items-center justify-center gap-6 text-sm font-medium text-gray-700 mb-6">
               {["one-way", "round-way", "multi-city"].map((type) => (
-                <label key={type} className="flex items-center gap-2">
+                <label key={type} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="tripType"
@@ -114,51 +244,57 @@ const FlightBanner = () => {
               ))}
             </div>
 
-            {/* Input Fields */}
-            <div className="grid md:grid-cols-5 gap-4 text-sm font-medium text-gray-700">
-              {/* FROM */}
-              <div className="border rounded-xl p-3 relative">
-                <p className="text-gray-400 text-xs mb-1">FROM</p>
-                <h4 className="text-blue-800 font-bold">Dhaka</h4>
-                <p className="text-xs">
-                  DAC, Hazrat Shahjalal International Airport
-                </p>
-                <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
-                  <FaExchangeAlt className="text-blue-800" />
-                </div>
-              </div>
+            {(tripType === "multi-city"
+              ? chunkArray(currentTrip?.fields || [], 4)
+              : [currentTrip?.fields || []]
+            ).map((group, rowIndex) => (
+              <div
+                key={rowIndex}
+                className="flex flex-wrap gap-4 text-sm font-medium text-gray-700 mb-4"
+              >
+                {group.map((field, idx) => (
+                  <div
+                    key={idx}
+                    className={`border rounded-xl p-3 min-w-[200px] relative ${
+                      field.isAddMore ? "text-blue-600 font-semibold cursor-pointer" : ""
+                    } ${field.isDisabled ? "opacity-60 cursor-not-allowed" : ""}`}
+                  >
+                    <p className="text-gray-400 text-xs mb-1">{field.label}</p>
 
-              {/* TO */}
-              <div className="border rounded-xl p-3">
-                <p className="text-gray-400 text-xs mb-1">TO</p>
-                <h4 className="text-blue-800 font-bold">Cox's Bazar</h4>
-                <p className="text-xs">CXB, Cox's Bazar Airport</p>
+                    {field.isAddMore ? (
+                      <button className="text-blue-600 font-semibold hover:underline">
+                        + Add Another City
+                      </button>
+                    ) : field.location ? (
+                      <>
+                        <h4 className="text-blue-800 font-bold">{field.location}</h4>
+                        <p className="text-xs">
+                          {field.code}, {field.airport}
+                        </p>
+                        {tripType !== "multi-city" && field.label === "FROM" && (
+                          <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
+                            <FaExchangeAlt className="text-blue-800" />
+                          </div>
+                        )}
+                      </>
+                    ) : field.date ? (
+                      <>
+                        <h4 className="text-blue-800 font-bold">{field.date}</h4>
+                        <p className="text-xs">{field.day}</p>
+                      </>
+                    ) : field.note ? (
+                      <h4 className="text-gray-500 font-medium text-sm">{field.note}</h4>
+                    ) : field.traveler ? (
+                      <>
+                        <h4 className="text-blue-800 font-bold">{field.traveler}</h4>
+                        <p className="text-xs">{field.class}</p>
+                      </>
+                    ) : null}
+                  </div>
+                ))}
               </div>
+            ))}
 
-              {/* JOURNEY DATE */}
-              <div className="border rounded-xl p-3">
-                <p className="text-gray-400 text-xs mb-1">JOURNEY DATE</p>
-                <h4 className="text-blue-800 font-bold">14 Jul'25</h4>
-                <p className="text-xs">Monday</p>
-              </div>
-
-              {/* RETURN DATE */}
-              <div className="border rounded-xl p-3">
-                <p className="text-gray-400 text-xs mb-1">RETURN DATE</p>
-                <h4 className="text-gray-500 font-medium text-sm">
-                  Save more on return flight
-                </h4>
-              </div>
-
-              {/* TRAVELER + CLASS */}
-              <div className="md:col-span-5 border rounded-xl p-3">
-                <p className="text-gray-400 text-xs mb-1">TRAVELER, CLASS</p>
-                <h4 className="text-blue-800 font-bold">1 Traveler</h4>
-                <p className="text-xs">Economy</p>
-              </div>
-            </div>
-
-            {/* Search Button */}
             <div className="mt-6 flex justify-center">
               <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-10 py-3 rounded-xl shadow-md">
                 Search

@@ -102,3 +102,127 @@
 // };
 
 // export default FlightSearch;
+
+// // one way
+//  <div className="flex flex-row gap-4 text-sm font-medium text-gray-700 overflow-x-auto">
+//         <div className="border rounded-xl p-3 relative min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">FROM</p>
+//           <h4 className="text-blue-800 font-bold">Dhaka</h4>
+//           <p className="text-xs">DAC, Hazrat Shahjalal International Airport</p>
+//           <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
+//             <FaExchangeAlt className="text-blue-800" />
+//           </div>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">TO</p>
+//           <h4 className="text-blue-800 font-bold">Cox's Bazar</h4>
+//           <p className="text-xs">CXB, Cox's Bazar Airport</p>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">JOURNEY DATE</p>
+//           <h4 className="text-blue-800 font-bold">14 Jul'25</h4>
+//           <p className="text-xs">Monday</p>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">RETURN DATE</p>
+//           <h4 className="text-gray-500 font-medium text-sm">
+//             Save more on return flight
+//           </h4>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">TRAVELER, CLASS</p>
+//           <h4 className="text-blue-800 font-bold">1 Traveler</h4>
+//           <p className="text-xs">Economy</p>
+//         </div>
+//       </div>
+
+
+// // Round way
+//  <p className="text-gray-400 text-xs mb-1">FROM</p>
+//                 <h4 className="text-blue-800 font-bold">Dhaka</h4>
+//                 <p className="text-xs">DAC, Hazrat Shahjalal International Airport</p>
+//                 <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
+//                   <FaExchangeAlt className="text-blue-800" />
+//                 </div>
+
+// div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">TO</p>
+//           <h4 className="text-blue-800 font-bold">Cox's Bazar</h4>
+//           <p className="text-xs">CXB, Cox's Bazar Airport</p>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">JOURNEY DATE</p>
+//           <h4 className="text-blue-800 font-bold">15 Jul'25</h4>
+//           <p className="text-xs">Tuesday</p>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">RETURN DATE</p>
+//          <h4 className="text-blue-800 font-bold">16 Jul'25</h4>
+//           <p className="text-xs">Wednessday</p>
+//         </div>
+
+//         <div className="border rounded-xl p-3 min-w-[200px]">
+//           <p className="text-gray-400 text-xs mb-1">TRAVELER, CLASS</p>
+//           <h4 className="text-blue-800 font-bold">1 Traveler</h4>
+//           <p className="text-xs">Economy</p>
+//         </div>
+//       </div>
+// // Multi way
+//         <div className="flex flex-row gap-4 text-sm font-medium text-gray-700 overflow-x-auto">
+//               <div className="border rounded-xl p-3 relative min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">FROM</p>
+//                 <h4 className="text-blue-800 font-bold">Dhaka</h4>
+//                 <p className="text-xs">DAC, Hazrat Shahjalal International Airport</p>
+//                 <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
+//                   <FaExchangeAlt className="text-blue-800" />
+//                 </div>
+//               </div>
+      
+//               <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">TO</p>
+//                 <h4 className="text-blue-800 font-bold">Cox's Bazar</h4>
+//                 <p className="text-xs">CXB, Cox's Bazar Airport</p>
+//               </div>
+      
+//               <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">JOURNEY DATE</p>
+//                 <h4 className="text-blue-800 font-bold">14 Jul'25</h4>
+//                 <p className="text-xs">Monday</p>
+//               </div>
+      
+      
+//               <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">TRAVELER, CLASS</p>
+//                 <h4 className="text-blue-800 font-bold">1 Traveler</h4>
+//                 <p className="text-xs">Economy</p>
+//               </div>
+//               <div className="border rounded-xl p-3 relative min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">FROM</p>
+//                 <h4 className="text-blue-800 font-bold">Dhaka</h4>
+//                 <p className="text-xs">DAC, Hazrat Shahjalal International Airport</p>
+//                 <div className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-10 h-10 rounded-full flex items-center justify-center">
+//                   <FaExchangeAlt className="text-blue-800" />
+//                 </div>
+//                    <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">TO</p>
+//                 <h4 className="text-blue-800 font-bold">Cox's Bazar</h4>
+//                 <p className="text-xs">CXB, Cox's Bazar Airport</p>
+//               </div>
+
+//                 <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">JOURNEY DATE</p>
+//                 <h4 className="text-blue-800 font-bold">14 Jul'25</h4>
+//                 <p className="text-xs">Monday</p>
+//               </div>
+//                 <div className="border rounded-xl p-3 min-w-[200px]">
+//                 <p className="text-gray-400 text-xs mb-1">Add Another city</p>
+              
+//               </div>
+
+//             </div>
