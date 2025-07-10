@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const allDeals = [
     {
@@ -158,12 +158,22 @@ const allDeals = [
 
 const SpecialOffers = () => {
     const [filter, setFilter] = useState("All");
+    const flickingRef = useRef(null);
+
     const filteredDeals = filter === "All" ? allDeals : allDeals.filter((d) => d.category === filter);
     const categories = ["All", ...new Set(allDeals.map((deal) => deal.category))];
 
+    const handlePrev = () => {
+        flickingRef.current?.prev();
+    };
+
+    const handleNext = () => {
+        flickingRef.current?.next();
+    };
+
     return (
         <section className="bg-[#f1f6fc] py-8 px-4 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto relative">
                 {/* Title and Tabs */}
                 <div className="flex items-center justify-between mb-6">
                     <h2 className="text-[#0b0d4f] font-bold text-2xl">Special Offers</h2>
@@ -172,8 +182,9 @@ const SpecialOffers = () => {
                             <button
                                 key={tab}
                                 onClick={() => setFilter(tab)}
-                                className={`px-4 py-1 text-sm font-medium rounded-full transition whitespace-nowrap ${filter === tab ? 'bg-white text-[#0b0d4f]' : 'text-[#0b0d4f] hover:bg-[#e2e8f0]'
-                                    }`}
+                                className={`px-4 py-1 text-sm font-medium rounded-full transition whitespace-nowrap ${
+                                    filter === tab ? 'bg-white text-[#0b0d4f]' : 'text-[#0b0d4f] hover:bg-[#e2e8f0]'
+                                }`}
                             >
                                 {tab}
                             </button>
@@ -181,8 +192,17 @@ const SpecialOffers = () => {
                     </div>
                 </div>
 
+                {/* Left Arrow */}
+                <button
+                    onClick={handlePrev}
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+                >
+                    <FaArrowLeft className="text-[#0b0d4f]" />
+                </button>
+
                 {/* Flicking Slider */}
                 <Flicking
+                    ref={flickingRef}
                     circular={false}
                     moveType="freeScroll"
                     align="prev"
@@ -203,17 +223,22 @@ const SpecialOffers = () => {
                                 />
                             </div>
                             <div className="p-4 flex-1 flex flex-col relative justify-between">
-                                <h3 className="text-base font-semibold text-[#0b0d4f] mb-2">
+                                <h3 className="text-base font-semibold text-[#0b0d4f] mb-14">
                                     {d.title}
                                 </h3>
-                                {/* <button className="mt-auto bg-[#ffc107] hover:bg-[#e6b800] text-sm font-semibold text-[#0b0d4f] px-4 py-2 rounded-full flex items-center gap-1 transition">
-                                    <FaArrowRight /> Learn More
-                                </button> */}
                                 <button className='bg-yellow-400 rounded-xl absolute -right-0 -bottom-4 p-2 '> Learn more</button>
                             </div>
                         </div>
                     ))}
                 </Flicking>
+
+                {/* Right Arrow */}
+                <button
+                    onClick={handleNext}
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+                >
+                    <FaArrowRight className="text-[#0b0d4f]" />
+                </button>
             </div>
         </section>
     );

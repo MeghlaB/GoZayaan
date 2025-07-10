@@ -4,6 +4,7 @@ import GoLimitlessBanner from '../GoLimitlessBanner'
 import HotDeals from '../HotDeals'
 import StudentOfferBanner from '../StudentOfferBanner'
 import SpecialOffers from '../SpecialOffers'
+import OfferSlider from '../OfferSlider/OfferSlider'
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <HotDeals/>
       <StudentOfferBanner/>
       <SpecialOffers></SpecialOffers>
+      <OfferSlider></OfferSlider>
     </div>
   )
 }
