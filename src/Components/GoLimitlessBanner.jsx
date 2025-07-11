@@ -15,17 +15,17 @@ const GoLimitlessBanner = () => {
   };
 
   return (
-    <div>
+    <div className="w-full px-4 mt-10">
       {/* Banner Section */}
       <div
-        className="w-full mt-10 mx-auto max-w-[1150px] h-[200px] rounded-2xl bg-cover bg-center flex items-center justify-between px-10"
+        className="w-full max-w-[1150px] mx-auto rounded-2xl bg-cover bg-center flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-10 sm:py-0 sm:h-[200px]"
         style={{
           backgroundImage:
             "url('https://img.freepik.com/premium-photo/man-deserted-island-isolated_198067-774362.jpg')",
         }}
       >
         {/* Text Section */}
-        <div className="text-black text-4xl md:text-5xl font-bold flex items-center space-x-3">
+        <div className="text-black text-3xl sm:text-4xl md:text-5xl font-bold flex items-center gap-3">
           <span className="border-4 border-white rounded-full px-4 py-1">GO</span>
           <span className="tracking-wide">LIMITLESS</span>
         </div>
@@ -33,10 +33,10 @@ const GoLimitlessBanner = () => {
         {/* Watch Button */}
         <button
           onClick={openVideo}
-          className="flex items-center bg-white bg-opacity-20 border border-white text-black text-lg font-medium px-6 py-2 rounded-full hover:bg-opacity-30 transition"
+          className="flex items-center justify-center bg-white bg-opacity-20 border border-white text-black text-base sm:text-lg font-medium px-6 py-2 rounded-full hover:bg-opacity-30 transition"
         >
           Watch the film
-          <span className="ml-2 text-2xl">➔</span>
+          <span className="ml-2 text-xl sm:text-2xl">➔</span>
         </button>
       </div>
 

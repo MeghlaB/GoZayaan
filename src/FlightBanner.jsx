@@ -14,116 +14,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import Flightcard from "./Components/FlightCard ";
 
-const chunkArray = (arr, size) => {
-  const chunks = [];
-  for (let i = 0; i < arr.length; i += size) {
-    chunks.push(arr.slice(i, i + size));
-  }
-  return chunks;
-};
 
-const airports = [
-  {
-    city: "Dhaka",
-    code: "DAC",
-    airport: "Hazrat Shahjalal International Airport",
-  },
-  { city: "Cox's Bazar", code: "CXB", airport: "Cox's Bazar Airport" },
-  {
-    city: "Chittagong",
-    code: "CGP",
-    airport: "Shah Amanat International Airport",
-  },
-  { city: "Sylhet", code: "ZYL", airport: "Osmani International Airport" },
-];
 
 const FlightBanner = () => {
   const [activeTab, setActiveTab] = useState("flight");
 
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentField, setCurrentField] = useState(null);
+
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [showTravelerDropdown, setShowTravelerDropdown] = useState(false);
 
 
 
 
-  const [data, setData] = useState([
-    {
-      tripType: "one-way",
-      fields: [
-        {
-          label: "FROM",
-          location: "Dhaka",
-          code: "DAC",
-          airport: "Hazrat Shahjalal International Airport",
-        },
-        {
-          label: "TO",
-          location: "Cox's Bazar",
-          code: "CXB",
-          airport: "Cox's Bazar Airport",
-        },
-        { label: "JOURNEY DATE", date: "14 Jul'25", day: "Monday" },
-        { label: "RETURN DATE", date: "15 Jul'25", day: "Tuesday" },
-        { label: "TRAVELER, CLASS", traveler: "1 Traveler", class: "Economy" },
-      ],
-    },
-    {
-      tripType: "round-way",
-      fields: [
-        {
-          label: "FROM",
-          location: "Dhaka",
-          code: "DAC",
-          airport: "Hazrat Shahjalal International Airport",
-        },
-        {
-          label: "TO",
-          location: "Cox's Bazar",
-          code: "CXB",
-          airport: "Cox's Bazar Airport",
-        },
-        { label: "JOURNEY DATE", date: "15 Jul'25", day: "Tuesday" },
-        { label: "RETURN DATE", date: "16 Jul'25", day: "Wednesday" },
-        { label: "TRAVELER, CLASS", traveler: "1 Traveler", class: "Economy" },
-      ],
-    },
-    {
-      tripType: "multi-city",
-      fields: [
-        {
-          label: "FROM",
-          location: "Dhaka",
-          code: "DAC",
-          airport: "Hazrat Shahjalal International Airport",
-        },
-        {
-          label: "TO",
-          location: "Cox's Bazar",
-          code: "CXB",
-          airport: "Cox's Bazar Airport",
-        },
-        { label: "JOURNEY DATE", date: "14 Jul'25", day: "Monday" },
-        { label: "TRAVELER, CLASS", traveler: "1 Traveler", class: "Economy" },
-        {
-          label: "FROM",
-          location: "Chittagong",
-          code: "CGP",
-          airport: "Shah Amanat International Airport",
-        },
-        {
-          label: "TO",
-          location: "Sylhet",
-          code: "ZYL",
-          airport: "Osmani International Airport",
-        },
-        { label: "JOURNEY DATE", date: "15 Jul'25", day: "Tuesday" },
-        { label: "Add Another city", isAddMore: true },
-      ],
-    },
-  ]);
+ 
 
 
 
@@ -168,7 +73,7 @@ const FlightBanner = () => {
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
           backgroundImage:
-            "url('https://static.vecteezy.com/system/resources/thumbnails/037/487/465/small/ai-generated-tropical-island-in-middle-of-ocean-palm-trees-and-trees-on-sandy-beach-in-sea-summer-paradise-bay-photo.jpg')",
+            "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9LlpveSeVoYPbhFeG1kju9eg2Aei93H48xw&s')",
         }}
       />
 
@@ -179,7 +84,7 @@ const FlightBanner = () => {
             isScrolled ? "bg-white shadow-md" : ""
           }`}
         >
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className="max-w-6xl w-full mx-auto md:px-4 sm:px-4 lg:px-8 py-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
               <img
                 src="https://i.ibb.co/rGHgJTF4/download-9.jpg"

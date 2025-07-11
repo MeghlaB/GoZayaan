@@ -54,6 +54,8 @@ const deals = [
   },
 ];
 
+
+
 export default function HotDeals() {
   const flickingRef = useRef(null);
 
@@ -70,9 +72,9 @@ export default function HotDeals() {
       <div className="max-w-7xl mx-auto relative">
 
         {/* Title and Tabs */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <h2 className="text-[#0b0d4f] font-bold text-2xl">Hot Deals</h2>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             {["All", "Flight", "Hotel", "Tour", "Others"].map((tab) => (
               <button
                 key={tab}
@@ -84,10 +86,10 @@ export default function HotDeals() {
           </div>
         </div>
 
-        {/* Left Arrow */}
+        {/* Left Arrow (hide on mobile) */}
         <button
           onClick={handlePrev}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+          className="hidden sm:flex absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
         >
           <FaArrowLeft className="text-[#0b0d4f]" />
         </button>
@@ -105,10 +107,10 @@ export default function HotDeals() {
           {deals.map((d) => (
             <div
               key={d.id}
-              className="mr-6 min-w-[370px] bg-white rounded-xl shadow flex flex-col transition hover:shadow-lg duration-300"
+              className="mr-4 min-w-[280px] sm:min-w-[350px] bg-white rounded-xl shadow flex flex-col transition hover:shadow-lg duration-300"
             >
-              {/* Left Blue Box */}
-              <div className="w-[100px] h-[100px] bg-[#0d1d74] rounded-tl-xl flex flex-col justify-between p-2">
+              {/* Blue Discount Box */}
+              <div className="w-full sm:w-[100px] h-[100px] bg-[#0d1d74] rounded-tl-xl flex flex-col justify-between p-2">
                 <div className="w-10 h-10 bg-white text-[#0d1d74] font-bold text-sm rounded flex items-center justify-center">
                   {d.discount}
                 </div>
@@ -134,7 +136,7 @@ export default function HotDeals() {
                     </svg>
                     {d.code}
                   </span>
-                  <button className="bg-[#ffc107] hover:bg-[#e6b800] text-xs font-semibold text-[#0b0d4f] px-4 py-2 rounded-full flex items-center gap-1 transition">
+                  <button className="bg-[#ffc107] hover:bg-[#e6b800] text-xs font-semibold text-[#0b0d4f] px-3 sm:px-4 py-2 rounded-full flex items-center gap-1 transition">
                     <span className="text-sm font-bold">&lt;&gt;</span> Learn More
                   </button>
                 </div>
@@ -143,10 +145,10 @@ export default function HotDeals() {
           ))}
         </Flicking>
 
-        {/* Right Arrow */}
+        {/* Right Arrow (hide on mobile) */}
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+          className="hidden sm:flex absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-gray-100"
         >
           <FaArrowRight className="text-[#11158a]" />
         </button>

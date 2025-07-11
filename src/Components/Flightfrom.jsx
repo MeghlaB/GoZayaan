@@ -200,13 +200,13 @@ const FlightForm = () => {
   };
 
   return (
-    <div className="w-full mt-10 bg-white flex flex-col items-center  sm:px-6 lg:px-8 pt-10 pb-20">
+    <div className="w-full mt-10 bg-white flex flex-col items-center sm:px-6 lg:px-8 pt-10 pb-20">
       {/* Trip Type */}
-      <div className="flex text-left gap-5 text-sm mb-6 ">
+      <div className="flex flex-wrap text-left gap-5 text-sm mb-6 justify-center">
         {["one-way", "round-way", "multi-city"].map((type) => (
           <label
             key={type}
-            className="flex items-center gap-2 whitespace-nowrap"
+            className="flex items-center gap-2 whitespace-nowrap cursor-pointer"
           >
             <input
               type="radio"
@@ -224,8 +224,8 @@ const FlightForm = () => {
       </div>
 
       {/* Form Fields */}
-      <div className="flex  bg-white w-full max-w-6xl rounded-3xl shadow-lg  px-5 items-center justify-center ">
-        <div className="px-6 py-6 relative">
+      <div className="flex flex-col sm:flex-row bg-white w-full max-w-6xl rounded-3xl shadow-lg px-5 items-center justify-center gap-4 relative">
+        <div className="px-6 py-6 w-full">
           {(tripType === "multi-city"
             ? chunkArray(currentTrip?.fields || [], 4)
             : [currentTrip?.fields || []]
@@ -247,11 +247,9 @@ const FlightForm = () => {
                   return (
                     <div
                       key={idx}
-                      className=" rounded-xl p-3 min-w-0 flex-1 relative cursor-pointer"
+                      className="rounded-xl p-3 min-w-0 flex-1 relative cursor-pointer"
                     >
-                      <p className="text-gray-400 text-xs mb-1">
-                        {field.label}
-                      </p>
+                      <p className="text-gray-400 text-xs mb-1">{field.label}</p>
                       <DatePicker
                         selected={
                           field.label === "JOURNEY DATE"
@@ -266,11 +264,7 @@ const FlightForm = () => {
                         dateFormat="dd MMM ''yy"
                         className="text-blue-800 font-bold w-full"
                         calendarClassName="rounded-xl shadow-lg"
-                        minDate={
-                          field.label === "RETURN DATE"
-                            ? journeyDate
-                            : new Date()
-                        }
+                        minDate={field.label === "RETURN DATE" ? journeyDate : new Date()}
                       />
                     </div>
                   );
@@ -294,30 +288,25 @@ const FlightForm = () => {
                     <p className="text-gray-400 text-xs mb-1">{field.label}</p>
                     {field.location ? (
                       <>
-                        <h4 className="text-blue-800 font-bold truncate">
-                          {field.location}
-                        </h4>
+                        <h4 className="text-blue-800 font-bold truncate">{field.location}</h4>
                         <p className="text-xs truncate">
                           {field.code}, {field.airport}
                         </p>
-                        {tripType !== "multi-city" &&
-                          field.label === "FROM" && (
-                            <div
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                swapLocations();
-                              }}
-                              className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-8 h-8 rounded-full flex items-center justify-center sm:w-10 sm:h-10"
-                            >
-                              <FaExchangeAlt className="text-blue-800" />
-                            </div>
-                          )}
+                        {tripType !== "multi-city" && field.label === "FROM" && (
+                          <div
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              swapLocations();
+                            }}
+                            className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-white border shadow w-8 h-8 rounded-full flex items-center justify-center sm:w-10 sm:h-10"
+                          >
+                            <FaExchangeAlt className="text-blue-800" />
+                          </div>
+                        )}
                       </>
                     ) : field.traveler ? (
                       <>
-                        <h4 className="text-blue-800 font-bold truncate">
-                          {field.traveler}
-                        </h4>
+                        <h4 className="text-blue-800 font-bold truncate">{field.traveler}</h4>
                         <p className="text-xs">{field.class}</p>
                       </>
                     ) : field.isAddMore ? (
@@ -335,7 +324,8 @@ const FlightForm = () => {
           {showLocationDropdown && (
             <div
               ref={locationDropdownRef}
-              className="absolute z-50 left-0 right-0 mx-4 bg-white border rounded-xl shadow-lg px-4 py-4"
+              className="absolute z-50 left-0 right-0 mx-4 bg-white border rounded-xl shadow-lg px-4 py-4 max-h-80 overflow-auto sm:max-w-md sm:mx-auto sm:left-auto sm:right-auto"
+              style={{ top: "100%" }}
             >
               <div className="relative mb-4">
                 <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -350,11 +340,12 @@ const FlightForm = () => {
                 <button
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
                   onClick={() => setShowLocationDropdown(false)}
+                  aria-label="Close location dropdown"
                 >
                   <FaTimes />
                 </button>
               </div>
-              <div className="max-h-[300px] overflow-y-auto">
+              <div className="max-h-64 overflow-y-auto">
                 {filteredAirports.length > 0 ? (
                   filteredAirports.map((airport, index) => (
                     <div
@@ -372,9 +363,7 @@ const FlightForm = () => {
                     </div>
                   ))
                 ) : (
-                  <div className="text-center text-gray-500">
-                    No airports found
-                  </div>
+                  <div className="text-center text-gray-500">No airports found</div>
                 )}
               </div>
             </div>
@@ -384,12 +373,13 @@ const FlightForm = () => {
           {showTravelerDropdown && (
             <div
               ref={travelerDropdownRef}
-              className="absolute right-0 bg-white border rounded-xl shadow-lg p-4 z-50"
+              className="absolute right-0 bg-white border rounded-xl shadow-lg p-4 z-50 w-full max-w-xs sm:max-w-sm mt-2 sm:right-auto sm:left-0"
+              style={{ top: "100%" }}
             >
               {["adults", "children", "infants"].map((key) => (
                 <div
                   key={key}
-                  className="flex justify-between items-center py-2 border-b"
+                  className="flex justify-between items-center py-2 border-b last:border-b-0"
                 >
                   <div>
                     <p className="font-semibold capitalize">{key}</p>
@@ -409,6 +399,7 @@ const FlightForm = () => {
                         }))
                       }
                       className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-800"
+                      aria-label={`Decrease ${key}`}
                     >
                       -
                     </button>
@@ -421,6 +412,7 @@ const FlightForm = () => {
                         }))
                       }
                       className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-800"
+                      aria-label={`Increase ${key}`}
                     >
                       +
                     </button>
@@ -428,8 +420,11 @@ const FlightForm = () => {
                 </div>
               ))}
               <div className="mt-3">
-                <label className="font-semibold block mb-1">Class</label>
+                <label className="font-semibold block mb-1" htmlFor="classSelect">
+                  Class
+                </label>
                 <select
+                  id="classSelect"
                   value={travelers.class}
                   onChange={(e) =>
                     setTravelers((prev) => ({ ...prev, class: e.target.value }))
@@ -444,18 +439,19 @@ const FlightForm = () => {
               </div>
               <button
                 onClick={() => setShowTravelerDropdown(false)}
-                className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-xl"
+                className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-xl w-full"
               >
                 Done
               </button>
             </div>
           )}
         </div>
+
         {/* Search Button */}
-        <div className="  flex justify-center">
-          <Link to="/search">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold px-6 py-3 rounded-xl shadow-md">
-            Modify  Search
+        <div className="flex justify-center sm:ml-4 w-full sm:w-auto">
+          <Link to="/search" className="w-full sm:w-auto">
+            <button className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold px-6 py-3 rounded-xl shadow-md w-full sm:w-auto">
+              Modify Search
             </button>
           </Link>
         </div>

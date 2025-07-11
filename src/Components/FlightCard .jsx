@@ -147,7 +147,7 @@ const Flightcard = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl bg-white rounded-3xl shadow-lg px-6 py-6 relative">
+    <div className="w-full container mt-10 bg-white mx-auto rounded-3xl shadow-lg px-6 py-6 relative">
       {/* Trip Type */}
       <div className="flex flex-wrap justify-center gap-5 text-sm mb-6">
         {["one-way", "round-way", "multi-city"].map((type) => (
