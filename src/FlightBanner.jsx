@@ -118,7 +118,7 @@ const FlightBanner = () => {
   {/* Wrapper for entire card */}
   <div className="relative w-full max-w-5xl">
     {/* Floating Tab Bar */}
-    <div className="absolute hidden -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-md px-4 py-2 md:flex gap-6 z-10">
+    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-xl md:rounded-full shadow-md px-4 py-2 flex gap-6 z-10">
       {["flight", "hotel", "tour", "visa"].map((tab) => (
         <button
           key={tab}
@@ -139,7 +139,7 @@ const FlightBanner = () => {
     </div>
 
     {/* Main Card */}
-    <div className="bg-white rounded-3xl  pt-12 pb-6 px-4 sm:px-6">
+    <div className="bg-white rounded-3xl  pt-4 pb-6 px-4 sm:px-6">
       {/* Flight Form Goes Here */}
       <Flightcard />
     </div>

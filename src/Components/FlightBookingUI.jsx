@@ -12,6 +12,7 @@ import {
   Clock,
 } from "lucide-react";
 import { BiChevronDown } from "react-icons/bi";
+import TravellerDetails from "./SearchSection/Travelsdetails";
 
 const flights = [
   {
@@ -109,9 +110,9 @@ export default function FlightBookingUI() {
     return `${min}:${sec}`;
   };
 
-  const closeFlightDetails = () => {
-    setSelectedFlight(null);
-  };
+  // const closeFlightDetails = () => {
+  //   setSelectedFlight(null);
+  // };
 
   return (
     <div className="bg-[#ecf1f5] min-h-screen p-4 sm:p-6 space-y-6">
@@ -265,54 +266,7 @@ export default function FlightBookingUI() {
 
                       {/* Traveller Details */}
                       <div className="p-6">
-                        <h3 className="font-bold mb-4">Enter Traveller Details</h3>
-                        <div className="border rounded-md p-4">
-                          <div className="flex justify-between items-center mb-4">
-                            <span>Passenger 1</span>
-                            <span className="text-sm text-gray-500">
-                              Adult | Primary Contact
-                            </span>
-                          </div>
-
-                          <p className="text-sm text-gray-500 mb-4">
-                            Personal Details - As mentioned on your passport or government approved IDs
-                          </p>
-
-                          <div className="flex gap-4 mb-4">
-                            <Button variant="outline" className="flex-1">
-                              MR.
-                            </Button>
-                            <Button variant="outline" className="flex-1">
-                              MS.
-                            </Button>
-                            <Button variant="outline" className="flex-1">
-                              MRS.
-                            </Button>
-                          </div>
-
-                          <div className="space-y-4">
-                            <div>
-                              <label className="block text-sm text-gray-500 mb-1">
-                                Given Name / First Name
-                              </label>
-                              <input type="text" className="w-full border rounded-md p-2" />
-                            </div>
-                            <div>
-                              <label className="block text-sm text-gray-500 mb-1">
-                                Last Name
-                              </label>
-                              <input type="text" className="w-full border rounded-md p-2" />
-                            </div>
-                          </div>
-                          <div className="p-4 bg-gray-50 flex flex-col sm:flex-row justify-end gap-4 mt-4">
-                            <Button variant="outline" onClick={closeFlightDetails} className="w-full sm:w-auto">
-                              Back
-                            </Button>
-                            <Button className="bg-[#ffc800] hover:bg-[#ffb700] text-black w-full sm:w-auto">
-                              Continue Booking
-                            </Button>
-                          </div>
-                        </div>
+                       <TravellerDetails/>
                       </div>
                     </div>
                   )}
