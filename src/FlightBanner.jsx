@@ -69,18 +69,18 @@ const FlightBanner = () => {
       <div className="relative z-10 w-full">
         {/* Navbar */}
         <div
-          className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-            isScrolled ? "bg-white shadow-md" : ""
+          className={` w-full fixed top-0 z-50 transition-all duration-300 ${
+            isScrolled ? "bg-white shadow-md" : "bg-white md:bg-transparent"
           }`}
         >
           <div className="max-w-6xl w-full mx-auto md:px-4 px-4 lg:px-8 py-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
               <img
-                src="https://i.ibb.co/rGHgJTF4/download-9.jpg"
-                className="h-6"
+                src="https://i.ibb.co/84mNMxzG/images-removebg-preview.png"
+                className="w-[100px] h-[50px]"
                 alt="logo"
               />
-              <span className="font-bold text-xl text-[#000E6E]">gozayaan</span>
+              {/* <span className="font-bold text-xl text-[#000E6E]">gozayaan</span> */}
             </div>
             {isScrolled && (
               <div className="flex gap-2 sm:gap-4 bg-white px-2 sm:px-4 py-2 rounded-xl shadow-md text-xs sm:text-sm max-w-full overflow-x-auto whitespace-nowrap">
@@ -103,49 +103,60 @@ const FlightBanner = () => {
                 ))}
               </div>
             )}
-            <button className="bg-[#000E6E] text-white px-2 md:px-4 py-1 rounded font-medium text-sm">
-              Sign In
-            </button>
+            <div className="flex items-center">
+              <div className="flex items-center justify-center -space-x-1.5">
+                <img
+                  src="https://i.ibb.co/HLt1qpB2/download-14-removebg-preview.png"
+                  className="w-4 h-4"
+                />
+                <button className=" text-gray-500 px-2 md:px-4 py-1 rounded font-medium text-sm">
+                  BDT
+                </button>
+              </div>
+
+              <button className="hidden md:block bg-[#000E6E] text-white px-2 md:px-4 py-1 rounded font-medium text-sm">
+                Sign In
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Main Form Section */}
         <div
-  className={`w-full flex flex-col items-center px-4 sm:px-6 lg:px-8 pb-16 ${
-    isScrolled ? "pt-[130px]" : "pt-30"
-  }`}
->
-  {/* Wrapper for entire card */}
-  <div className="relative w-full max-w-5xl">
-    {/* Floating Tab Bar */}
-    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-xl md:rounded-full shadow-md px-4 py-2 flex gap-6 z-10">
-      {["flight", "hotel", "tour", "visa"].map((tab) => (
-        <button
-          key={tab}
-          onClick={() => setActiveTab(tab)}
-          className={`flex items-center gap-1 text-sm sm:text-base px-2 sm:px-3 py-1 font-medium rounded-full transition ${
-            activeTab === tab
-              ? "text-blue-900 border-b-2 border-yellow-400"
-              : "text-gray-500 hover:text-blue-800"
+          className={`w-full flex flex-col items-center px-4 sm:px-6 lg:px-8 pb-16 ${
+            isScrolled ? "pt-[130px]" : "pt-30"
           }`}
         >
-          {tab === "flight" && <FaPlaneDeparture />}
-          {tab === "hotel" && <FaHotel />}
-          {tab === "tour" && <FaSuitcaseRolling />}
-          {tab === "visa" && <FaPassport />}
-          {tab.charAt(0).toUpperCase() + tab.slice(1)}
-        </button>
-      ))}
-    </div>
+          {/* Wrapper for entire card */}
+          <div className="relative w-full max-w-5xl">
+            {/* Floating Tab Bar */}
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-xl md:rounded-full shadow-md px-4 py-2 flex gap-6 z-10">
+              {["flight", "hotel", "tour", "visa"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex items-center gap-1 text-sm sm:text-base px-2 sm:px-3 py-1 font-medium rounded-full transition ${
+                    activeTab === tab
+                      ? "text-blue-900 border-b-2 border-yellow-400"
+                      : "text-gray-500 hover:text-blue-800"
+                  }`}
+                >
+                  {tab === "flight" && <FaPlaneDeparture />}
+                  {tab === "hotel" && <FaHotel />}
+                  {tab === "tour" && <FaSuitcaseRolling />}
+                  {tab === "visa" && <FaPassport />}
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
 
-    {/* Main Card */}
-    <div className="bg-white rounded-3xl  pt-4 pb-6 px-4 sm:px-6">
-      {/* Flight Form Goes Here */}
-      <Flightcard />
-    </div>
-  </div>
-</div>
-
+            {/* Main Card */}
+            <div className="bg-white rounded-3xl  pt-4 pb-6 px-4 sm:px-6">
+              {/* Flight Form Goes Here */}
+              <Flightcard />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Mobile Bottom Nav */}
