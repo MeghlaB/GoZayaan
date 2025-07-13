@@ -130,12 +130,12 @@ const FlightBanner = () => {
           {/* Wrapper for entire card */}
           <div className="relative w-full max-w-5xl">
             {/* Floating Tab Bar */}
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-xl md:rounded-full shadow-md px-4 py-2 flex gap-6 z-10">
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-[8px] md:rounded-[8px] shadow-md px-4 py-2 flex gap-6 z-10 w-[350px] md:w-[450px]">
               {["flight", "hotel", "tour", "visa"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex items-center gap-1 text-sm sm:text-base px-2 sm:px-3 py-1 font-medium rounded-full transition ${
+                  className={`flex items-center gap-1 text-sm sm:text-base px-2 sm:px-3 py-1 font-medium rounded transition ${
                     activeTab === tab
                       ? "text-blue-900 border-b-2 border-yellow-400"
                       : "text-gray-500 hover:text-blue-800"
