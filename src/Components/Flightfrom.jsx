@@ -201,7 +201,7 @@ const FlightForm = () => {
 
   return (
     <div className="w-full mt-10 bg-white flex flex-col items-center sm:px-6 lg:px-8 pt-10 pb-20">
-      {/* Trip Type */}
+      
       <div className="flex flex-wrap text-left gap-5 text-sm mb-6 justify-center">
         {["one-way", "round-way", "multi-city"].map((type) => (
           <label
@@ -223,7 +223,7 @@ const FlightForm = () => {
         ))}
       </div>
 
-      {/* Form Fields */}
+  
       <div className="flex flex-col sm:flex-row bg-white w-full max-w-6xl rounded-3xl shadow-lg px-5 items-center justify-center gap-4 relative">
         <div className="px-6 py-6 w-full">
           {(tripType === "multi-city"
