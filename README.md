@@ -1,12 +1,56 @@
-# React + Vite
+# Gayzoan - Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Gayzoan** is a modern, responsive landing page built to introduce the core idea and services of the Gayzoan platform. This is the initial version of the project, focusing only on the frontend landing section.
 
-Currently, two official plugins are available:
+## 🔗 Live Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Live Site](https://go-zayaan.vercel.app/)
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React.js**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Framer Motion** *(if used)*
+- **React Router DOM** *(if routing is implemented)*
+
+## ✨ Features
+
+- Clean and modern UI design
+- Fully responsive (mobile & desktop)
+- Hero section with call-to-action
+- Features/Services highlights
+- Reusable components
+- Optimized for performance
+
+## 📦 Installation & Setup Instructions
+
+To run this project locally, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/gayzoan.git
+2. Navigate to the project folder
+
+cd gayzoan
+3. Install dependencies
+bash
+npm install
+4. Run the project
+bash
+npm run dev
+The app should now be running on http://localhost:5173 (if using Vite).
+
+📁 Project Structure
+arduino
+
+gayzoan/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+└── tailwind.config.js
