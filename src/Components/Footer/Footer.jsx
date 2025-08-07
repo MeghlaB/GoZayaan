@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-[#000066] text-white text-sm px-4 md:px-10 lg:px-16 py-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-        {/* Discover */}
+      
         <div>
           <h4 className="font-semibold mb-3">Discover</h4>
           <ul className="space-y-1">
@@ -19,7 +19,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Payment Methods */}
+        
         <div>
           <h4 className="font-semibold mb-3">Payment Methods</h4>
           <div className="flex flex-wrap gap-2">
@@ -45,7 +45,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Need Help + Experience Center */}
         <div>
           <h4 className="font-semibold mb-3">Need Help ?</h4>
           <p className="mb-4">
