@@ -73,7 +73,7 @@ function BookingCarousel() {
 
   return (
     <div className="bg-gray-100 px-4 py-6 relative z-0 mt-10 max-w-6xl mx-auto">
-      {/* Left and Right Controls */}
+    
       <button
         onClick={goPrev}
         className="absolute left-1 top-1/2 transform -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-20 hover:bg-gray-200"
@@ -87,7 +87,7 @@ function BookingCarousel() {
         <ArrowRightIcon className="w-6 h-6 text-gray-600" />
       </button>
 
-      {/* Flicking Carousel */}
+ 
       <Flicking
         ref={flickingRef}
         circular={true}
