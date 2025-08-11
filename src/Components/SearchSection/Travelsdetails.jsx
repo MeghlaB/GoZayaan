@@ -123,7 +123,7 @@ const TravellerDetails = () => {
           </div>
         </div>
 
-        {/* Nationality & Frequent Flyer */}
+     
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
           <div>
             <label className="block text-sm font-semibold mb-1" htmlFor="nationality">
@@ -159,7 +159,7 @@ const TravellerDetails = () => {
         </div>
       </div>
 
-      {/* Contact Details */}
+   
       <div>
         <h3 className="text-blue-900 font-semibold mb-2">Contact Details</h3>
         <p className="text-gray-500 text-sm mb-4">Receive booking confirmation & updates</p>
@@ -219,7 +219,7 @@ const TravellerDetails = () => {
         </label>
       </div>
 
-      {/* Continue Button */}
+     
       <button
         onClick={handleContinue}
         className="mt-8 w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 rounded"
