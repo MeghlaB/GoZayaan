@@ -201,7 +201,7 @@ export default function FlightBookingUI() {
                     </div>
                   </Card>
 
-                  {/* Inline Flight Booking Details */}
+
                   {selectedFlight === idx && (
                     <div className="border-t p-4 bg-white">
                       <h1 className="text-xl font-bold mb-2">
@@ -232,7 +232,7 @@ export default function FlightBookingUI() {
                         </div>
                       </div>
 
-                      {/* Flight Details */}
+           
                       <div className="p-6 border-b">
                         <h3 className="font-bold mb-4">Flight Details</h3>
                         <div className="grid grid-cols-3 gap-4 text-sm">
@@ -256,7 +256,7 @@ export default function FlightBookingUI() {
                         </div>
                       </div>
 
-                      {/* Sign In Section */}
+                 
                       <div className="p-6 border-b">
                         <p className="text-sm text-center text-blue-600 mb-4">
                           Sign In to book faster and unlock all deals
@@ -264,14 +264,14 @@ export default function FlightBookingUI() {
                         <h4 className="font-semibold mb-2">Have a coupon?</h4>
                       </div>
 
-                      {/* Traveller Details */}
+                  
                       <div className="p-6">
                        <TravellerDetails/>
                       </div>
                     </div>
                   )}
 
-                  {/* Expandable flight details */}
+            
                   <div className="border-t text-sm text-gray-600 px-4 py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 cursor-pointer whitespace-nowrap">
                       Partially Refundable <BiChevronDown size={16} />
