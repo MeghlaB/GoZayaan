@@ -25,9 +25,9 @@ const NavbarTabs = ({ activeTab, setActiveTab }) => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center sm:justify-between gap-2 sm:gap-0">
-        {/* Top Section: Logo & Sign In */}
+    
         <div className="w-full flex items-center justify-between sm:justify-start sm:w-auto gap-4">
-          {/* Logo */}
+     
           <div className="flex items-center gap-2 flex-shrink-0">
             <img
               src="https://i.ibb.co/rGHgJTF4/download-9.jpg"
@@ -37,7 +37,7 @@ const NavbarTabs = ({ activeTab, setActiveTab }) => {
             <span className="font-bold text-lg sm:text-xl text-[#000E6E]">gozayaan</span>
           </div>
 
-          {/* Sign In Button on small screen */}
+
           <div className="block sm:hidden">
             <button className="bg-[#000E6E] text-white px-4 py-1 rounded font-medium text-sm whitespace-nowrap">
               Sign In
@@ -45,7 +45,7 @@ const NavbarTabs = ({ activeTab, setActiveTab }) => {
           </div>
         </div>
 
-        {/* Tabs (Hide on mobile, show on sm and up) */}
+
         <div className="hidden sm:flex gap-3 px-4 py-2 text-sm whitespace-nowrap">
           {["flight", "hotel", "tour", "visa"].map((tab) => (
             <button
