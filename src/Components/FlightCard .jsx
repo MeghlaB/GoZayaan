@@ -305,11 +305,10 @@ const Flightcard = () => {
           </div>
         ))}
 
-        {/* Location Dropdown */}
-        {/* Location Dropdown */}
+   
         {showLocationDropdown && (
           <>
-            {/* Mobile Fullscreen Dropdown */}
+      
             <div
               className="sm:hidden fixed inset-0 z-50 bg-white p-4 overflow-y-auto"
               ref={locationDropdownRef}
@@ -356,7 +355,7 @@ const Flightcard = () => {
               </div>
             </div>
 
-            {/* Desktop Dropdown */}
+       
             <div
               ref={locationDropdownRef}
               className="hidden sm:block h-[250px] w-[250px] absolute z-50 left-0 right-0 mx-4 bg-white border rounded-xl shadow-lg px-4 py-4 overflow-auto"
@@ -405,10 +404,10 @@ const Flightcard = () => {
           </>
         )}
 
-        {/* travels */}
+
         {showTravelerDropdown && (
           <>
-            {/* Mobile Traveler Fullscreen Modal */}
+    
             <div
               className="sm:hidden fixed inset-0 z-50 bg-white p-4 overflow-y-auto"
               ref={travelerDropdownRef}
@@ -486,7 +485,7 @@ const Flightcard = () => {
               </button>
             </div>
 
-            {/* Desktop Traveler Dropdown */}
+      
             <div
               ref={travelerDropdownRef}
               className="hidden sm:block h-[250px] absolute right-0 w-[250px] bg-white border rounded-xl shadow-lg p-4 z-50 overflow-y-auto"
@@ -557,7 +556,7 @@ const Flightcard = () => {
           </>
         )}
 
-        {/* Search Button */}
+     
         <div className="mt-6 flex justify-center">
           <Link to="/search">
             <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl shadow-md">
