@@ -48,7 +48,7 @@ function OfferSlider() {
     return (
         <section className="bg-[#f1f6fc] py-8 px-4 relative overflow-hidden">
             <div className="max-w-7xl mx-auto relative">
-                {/* Left Arrow */}
+         
                 <button
                     onClick={handlePrev}
                     className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-3 hover:bg-gray-100"
@@ -56,7 +56,6 @@ function OfferSlider() {
                     <FaChevronLeft className="text-blue-800" />
                 </button>
 
-                {/* Flicking Carousel */}
                 <Flicking
                     circular={false}
                     moveType="freeScroll"
@@ -82,7 +81,7 @@ function OfferSlider() {
                     ))}
                 </Flicking>
 
-                {/* Right Arrow */}
+        
                 <button
                     onClick={handleNext}
                     className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-3 hover:bg-gray-100"
