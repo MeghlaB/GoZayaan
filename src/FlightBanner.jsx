@@ -65,9 +65,9 @@ const FlightBanner = () => {
         }}
       />
 
-      {/* Main Content */}
+   
       <div className="relative z-10 w-full">
-        {/* Navbar */}
+   
         <div
           className={` w-full fixed top-0 z-50 transition-all duration-300 ${
             isScrolled ? "bg-white shadow-md" : "bg-white md:bg-transparent"
@@ -80,7 +80,7 @@ const FlightBanner = () => {
                 className="w-[100px] h-[50px]"
                 alt="logo"
               />
-              {/* <span className="font-bold text-xl text-[#000E6E]">gozayaan</span> */}
+             
             </div>
             {isScrolled && (
               <div className="flex gap-2 sm:gap-4 bg-white px-2 sm:px-4 py-2 rounded-xl shadow-md text-xs sm:text-sm max-w-full overflow-x-auto whitespace-nowrap">
