@@ -13,9 +13,7 @@ const Footer = () => {
             <li><a href="#">Terms</a></li>
             <li><a href="#">Talent & Culture</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Refund Policy</a></li>
-            <li><a href="#">EMI Policy</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            
           </ul>
         </div>
 
