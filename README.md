@@ -11,8 +11,8 @@
 - **React.js**
 - **Tailwind CSS**
 - **DaisyUI**
-- **Framer Motion** *(if used)*
-- **React Router DOM** *(if routing is implemented)*
+- **Framer Motion** 
+- **React Router DOM**
 
 ## ✨ Features
 
