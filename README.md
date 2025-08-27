@@ -40,9 +40,9 @@ npm install
 4. Run the project
 bash
 npm run dev
-The app should now be running on http://localhost:5173 (if using Vite).
+The app should now be running on http://localhost:5173 .
 
-📁 Project Structure
+Project Structure
 arduino
 
 gayzoan/
