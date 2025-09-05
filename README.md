@@ -2,11 +2,11 @@
 
 **Gayzoan** is a modern, responsive landing page built to introduce the core idea and services of the Gayzoan platform. This is the initial version of the project, focusing only on the frontend landing section.
 
-## 🔗 Live Preview
+##  Live Preview
 
 [Live Site](https://go-zayaan.vercel.app/)
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **React.js**
 - **Tailwind CSS**
@@ -14,7 +14,7 @@
 - **Framer Motion** 
 - **React Router DOM**
 
-## ✨ Features
+## Features
 
 - Clean and modern UI design
 - Fully responsive (mobile & desktop)
@@ -23,7 +23,7 @@
 - Reusable components
 - Optimized for performance
 
-## 📦 Installation & Setup Instructions
+##  Installation & Setup Instructions
 
 To run this project locally, follow these steps:
 
